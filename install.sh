@@ -1,3 +1,5 @@
 echo "Installing dotfiles for Justin Maher"
 
-source ./zsh/.aliasrc
+cp ./zsh/.zshrc ~/.zshrc
+
+echo "Finished Installing dotfiles for Justin Maher"
