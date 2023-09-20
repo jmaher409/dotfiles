@@ -6,17 +6,14 @@ zmodule zsh-users/zsh-autosuggestions
 zmodule environment
 zmodule input
 zmodule run-help
-zmodule asdf
 zmodule fzf
 zmodule git
 zmodule k
 zmodule magic-enter
-zmodule ruby
 zmodule ssh
 zmodule utility
 zmodule duration-info
 zmodule git-info
-zmodule homebrew
 zmodule joke/zim-yq
 zmodule prompt-pwd
 zmodule s1ck94
