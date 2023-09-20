@@ -6,3 +6,4 @@
 
 - link:
     ~/.zshrc: shell/zshrc
+    ~/.zimrc: shell/zimrc
