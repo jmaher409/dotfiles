@@ -2,14 +2,26 @@
 
 set -e
 
-CONFIG="install.conf.yaml"
+PLATFORM=$1
+WORK_CONTEXT=$2
+shift 2
+
+# install asdf separately
+if [ ! -d ~/.asdf ]; then
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+fi
+. "$HOME/.asdf/asdf.sh"
+
+CONFIG="install.conf.${PLATFORM}.${WORK_CONTEXT}.yaml"
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+PLUGIN_DIRS="--plugin-dir dotbot-asdf"
+
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" ${PLUGIN_DIRS} -d "${BASEDIR}" -c "${CONFIG}" "${@}"

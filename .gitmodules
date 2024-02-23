@@ -5,3 +5,6 @@
 [submodule "dotbot-ifplatform"]
 	path = dotbot-ifplatform
 	url = https://github.com/ssbanerje/dotbot-ifplatform.git
+[submodule "dotbot-asdf"]
+	path = dotbot-asdf
+	url = https://github.com/sobolevn/dotbot-asdf.git
