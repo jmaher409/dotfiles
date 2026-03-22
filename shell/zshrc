@@ -30,73 +30,6 @@ bindkey -e
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
 
-# -----------------
-# Zim configuration
-# -----------------
-
-# Use degit instead of git as the default tool to install and update modules.
-#zstyle ':zim:zmodule' use 'degit'
-
-# --------------------
-# Module configuration
-# --------------------
-
-#
-# git
-#
-
-# Set a custom prefix for the generated aliases. The default prefix is 'G'.
-#zstyle ':zim:git' aliases-prefix 'g'
-
-#
-# input
-#
-
-# Append `../` to your input for each `.` you type after an initial `..`
-#zstyle ':zim:input' double-dot-expand yes
-
-#
-# termtitle
-#
-
-# Set a custom terminal title format using prompt expansion escape sequences.
-# See http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html#Simple-Prompt-Escapes
-# If none is provided, the default '%n@%m: %~' is used.
-#zstyle ':zim:termtitle' format '%1~'
-
-#
-# zsh-autosuggestions
-#
-
-# Disable automatic widget re-binding on each precmd. This can be set when
-# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
-ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-
-# Customize the style that the suggestions are shown with.
-# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
-#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
-
-#
-# zsh-syntax-highlighting
-#
-
-# Set what highlighters will be used.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters.md
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-
-# Customize the main highlighter styles.
-# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
-#typeset -A ZSH_HIGHLIGHT_STYLES
-#ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
-
-# ------------------------------
-# Post-init module configuration
-# ------------------------------
-
-#
-# zsh-history-substring-search
-#
-
 zmodload -F zsh/terminfo +p:terminfo
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
 for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
@@ -111,39 +44,58 @@ function pfp() {
   lsof -nP -iTCP:$1 | grep LISTEN
 }
 
+export CODEARTIFACT_DOMAIN=appfolio-ecr
+export CODEARTIFACT_DOMAIN_OWNER="195334327833"
+
+function getPackageRegistryToken() {
+	export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain $CODEARTIFACT_DOMAIN --domain-owner $CODEARTIFACT_DOMAIN_OWNER --query authorizationToken --output text`
+}
+
+function ar() {
+	otto aws assume-role -r $1 -a $2
+}
+
 alias g='git'
+alias k='kubectl'
 
-# source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+alias dpropsh="docker exec -it $(docker ps | grep appfolio/property | awk '{print $1}') sh"
 
-# for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
-# for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
-# for key ('k') bindkey -M vicmd ${key} history-substring-search-up
-# for key ('j') bindkey -M vicmd ${key} history-substring-search-down
-# unset key
-# ------------------
-# Initialize modules
-# ------------------
+alias sbom-check="~/src/Docker_SBOM_checker/docker_sbom_checker.sh -i $IMG_TAG | tee sbom.txt | grep -f ~/Downloads/vulnerable_packages.txt || echo '\n\n\nNo vulnerable packages found'"
 
-ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
-# Download zimfw plugin manager if missing.
-if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
-  if (( ${+commands[curl]} )); then
-    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  else
-    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
-        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-  fi
-fi
-# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
-if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-  source ${ZIM_HOME}/zimfw.zsh init -q
-fi
-# Initialize modules.
-source ${ZIM_HOME}/init.zsh
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/justin.maher/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+export PATH="/Users/justin.maher/.docker/bin:$PATH"
+
+export PATH="/Users/justin.maher/.local/bin:$PATH"
 
 . "$HOME/.asdf/asdf.sh"
+. "$HOME/.aliasrc"
+source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+
+
+PROPERTY_REF=master
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/justin.maher/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+#
+
+export GPG_TTY=$(tty)
+
+eval "$(starship init zsh)"
+
+export PROPERTY_PATH=~/src/apm_bundle/apps/property
+source /Users/justin.maher/.otto/shell-extensions/.zshrc
+
+# Beads multi-repo tracking
+export BEADS_DIR=~/src/jmaher-beads/.beads
+
+export ANTHROPIC_DEFAULT_OPUS_MODEL="us.anthropic.claude-opus-4-6-v1"
+export ANTHROPIC_DEFAULT_SONNET_MODEL="us.anthropic.claude-sonnet-4-6"
+export ANTHROPIC_DEFAULT_HAIKU_MODEL="us.anthropic.claude-haiku-4-5-20251001-v1:0"
+eval "$(zoxide init zsh)"
+export FEP_WORKTREE=main
+
+[[ -f ~/.secrets ]] && source ~/.secrets

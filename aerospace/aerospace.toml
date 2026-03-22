@@ -1,0 +1,87 @@
+# AeroSpace tiling window manager config
+# Migrated from Magnet shortcuts
+#
+# Modifier mapping (preserved from Magnet):
+#   ctrl-shift  → focus/move windows in tiling tree  (was: snap to half)
+#   ctrl-alt    → layout, float, workspaces, display  (was: thirds/specials)
+#
+# Behavior differences from Magnet:
+#   - Windows tile automatically; you don't snap them manually
+#   - ctrl-shift-wasd focuses the adjacent window (not snaps to half)
+#   - ctrl-shift-qezc moves window in the tree (not snaps to corner)
+#   - Thirds (ctrl-alt-dfg) have no direct equivalent; use workspace layout
+#   - ctrl-alt-c floats a window; ctrl-alt-backspace re-tiles it
+
+after-login-command = []
+after-startup-command = []
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+accordion-padding = 30
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+[gaps]
+inner.horizontal = 8
+inner.vertical = 8
+outer.left = 8
+outer.right = 8
+outer.top = 8
+outer.bottom = 8
+
+[mode.main.binding]
+# --- Focus - WASD layout (was Magnet snap to half) ---
+ctrl-shift-a = 'focus left'
+ctrl-shift-d = 'focus right'
+ctrl-shift-w = 'focus up'
+ctrl-shift-s = 'focus down'
+
+# --- Move window in tiling tree (was Magnet corners) ---
+ctrl-shift-q = 'move left'
+ctrl-shift-e = 'move right'
+ctrl-shift-z = 'move down'
+ctrl-shift-c = 'move up'
+
+# --- Maximize (was Magnet ctrl-shift-return) ---
+ctrl-shift-enter = 'fullscreen'
+
+# --- Split orientation ---
+ctrl-alt-h = 'split horizontal'
+ctrl-alt-v = 'split vertical'
+
+# --- Float / re-tile (was Magnet center / restore) ---
+ctrl-alt-c = 'layout floating'
+ctrl-alt-backspace = 'layout tiling'
+
+# --- Monitor navigation (same as Magnet) ---
+ctrl-alt-cmd-right = 'move-node-to-monitor next'
+ctrl-alt-cmd-left  = 'move-node-to-monitor prev'
+
+# --- Workspace navigation ---
+ctrl-alt-1 = 'workspace 1'
+ctrl-alt-2 = 'workspace 2'
+ctrl-alt-3 = 'workspace 3'
+ctrl-alt-4 = 'workspace 4'
+ctrl-alt-5 = 'workspace 5'
+ctrl-alt-6 = 'workspace 6'
+ctrl-alt-7 = 'workspace 7'
+ctrl-alt-8 = 'workspace 8'
+ctrl-alt-9 = 'workspace 9'
+
+# --- Move window to workspace ---
+ctrl-alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+ctrl-alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+ctrl-alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+ctrl-alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+ctrl-alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+ctrl-alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+ctrl-alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+ctrl-alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+ctrl-alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
+
+# --- Reload config ---
+ctrl-alt-shift-r = 'reload-config'

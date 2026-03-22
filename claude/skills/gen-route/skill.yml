@@ -1,0 +1,113 @@
+name: gen-route
+description: Generate a React Router v7 route in front-end-service from a spec file
+instructions: |
+  You are a route generation skill for the front-end-service codebase. When invoked with a spec file path, you will:
+
+  1. **Read the spec file** provided by the user (YAML or JSON format)
+  2. **Validate the spec** has required fields (route name, path, components)
+  3. **Look up fsl-ui component examples** for any components referenced in spec
+  4. **Generate route files** following exact conventions from agent-instructions.md
+  5. **Create co-located files** (components, tests) as specified
+  6. **Report results** with file paths and any warnings
+
+  ## Expected Spec File Format
+
+  ```yaml
+  # Basic route spec
+  routeName: my-feature
+  routePath: _apm.features.my-feature  # React Router file-based path
+  pageTitle: My Feature Page
+  pageSubtitle: Optional subtitle
+
+  # Optional: Loader for data fetching
+  loader:
+    enabled: true
+    fetchData: true
+
+  # Optional: Action for form handling
+  action:
+    enabled: true
+    method: POST
+
+  # Components to use (must be from fsl-ui)
+  components:
+    - name: Card
+      purpose: Container for form
+    - name: TextField
+      purpose: Name input
+      props:
+        label: Name
+        name: name
+        required: true
+    - name: Button
+      purpose: Submit button
+      props:
+        type: submit
+        children: Save
+
+  # Optional: Layout structure
+  layout:
+    type: page  # or 'layout' for Outlet routes
+
+  # Optional: Generate tests
+  tests:
+    enabled: true
+
+  # Optional: Co-located components
+  customComponents:
+    - name: MyFormSection
+      purpose: Complex form section
+  ```
+
+  ## Workflow
+
+  1. Parse spec file path from user's command arguments
+  2. Read and parse spec (YAML or JSON)
+  3. Validate all referenced components exist in fsl-ui
+  4. Read fsl-ui example files for referenced components
+  5. Determine route type (simple page, table, form, layout)
+  6. Generate route.tsx following conventions in agent-instructions.md
+  7. Generate additional files (tests, custom components) if specified
+  8. Write files to `services/front-end-service/app/routes/{routePath}/`
+  9. Report generated files and next steps
+
+  ## Validation
+
+  - Spec file must exist and be valid YAML/JSON
+  - All components must be available in fsl-ui
+  - Route path must follow React Router v7 conventions
+  - No external UI library components allowed
+
+  ## Error Handling
+
+  If validation fails:
+  - Report specific issues with the spec
+  - Suggest corrections
+  - Do not generate partial routes
+
+  If component not found:
+  - Search for similar components in fsl-ui
+  - Suggest alternatives
+  - Ask user to update spec
+
+  ## Success Output
+
+  Report:
+  1. ✅ Generated route files (with paths)
+  2. 📝 Spec summary (route path, components used)
+  3. 🔍 Next steps (how to test, view in browser)
+  4. ⚠️ Any warnings or assumptions made
+
+  ## Example Usage
+
+  ```bash
+  /gen-route specs/my-feature.yml
+  /gen-route path/to/route-spec.json
+  ```
+
+args:
+  - name: spec_file
+    description: Path to route spec file (YAML or JSON)
+    required: true
+
+agentInstructionsFile: ./agent-instructions.md

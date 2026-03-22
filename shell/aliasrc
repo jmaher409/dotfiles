@@ -1,0 +1,95 @@
+function pfp() {
+  lsof -nP -iTCP:$1 | grep LISTEN
+}
+
+function ottosh() {
+  export OTTO_DEVCONTAINER_DEFAULT_PROFILE=$1;
+  export OTTO_DEVCONTAINER_DEFAULT_DETACH=true;
+  exec $SHELL;
+}
+
+function tdiff() {
+  git diff --name-only --diff-filter=ACMTUXB $@ | grep _test.rb | xargs test_launcher
+}
+
+function testAnyFile() {
+  EXT="${1##*.}"
+
+  if [[ $EXT =~ (j|t)sx? ]]; then
+    npm run test:fast "${1}"
+  else
+    test_launcher "${1}"
+  fi
+}
+
+function tf_override () {
+  echo "Overriding terraform..."
+  cp provider.tf provider_override.tf
+  cp backend.tf backend_override.tf
+  sed -i '' -Ee 's/arn:.*/"/g' backend_override.tf
+  sed -i '' -Ee 's/arn:.*/"/g' provider_override.tf
+}
+
+function dcsh () {
+  docker compose exec $1 bash
+}
+
+alias lrqa='longer_role appfolio-qa User'
+alias prop='cd ~/src/apm_bundle/apps/property'
+alias fep='cd ~/src/front-end-platform'
+alias tp='cd ~/src/apm_bundle/apps/tportal'
+alias sma='cd ~/src/smart_maintenance'
+alias mccp='cd ~/src/mccportal_app'
+alias mccc='cd ~/src/mcccomm_app'
+alias solrstart='solr start -f -p 8988'
+alias r='bundle exec rake'
+alias v='vim .'
+alias g='git'
+alias y='yarn'
+alias br='bundle exec rake'
+alias b='bundle'
+alias k='kubectl'
+alias dcd='docker compose down'
+alias dcu='docker-compose up'
+
+alias cstart='colima start --arch aarch64 --vm-type=vz --vz-rosetta'
+alias cstop='colima stop'
+
+alias tl='test_launcher'
+alias dbdcm='rake db:drop db:create db:migrate'
+
+alias nvimc='nvim ~/.config/nvim/init.vim'
+alias vimc='nvim ~/.vimrc'
+
+alias ctags="`brew --prefix`/bin/ctags"
+
+alias zrc='vim ~/.zshrc'
+
+alias ttt='RAILS_ENV=test bundle exec rails db:drop db:create db:migrate'
+alias ddd='bundle exec rails db:drop db:create db:migrate'
+
+alias fs='foreman start'
+
+alias gr='git checkout `sel "git branch --sort=-committerdate | head -n 30"`'
+
+alias ktconf='vim ~/.config/kitty/kitty.conf'
+
+alias c='code .'
+
+alias farcy='~/script/farcy.sh'
+
+alias dockerl='docker login -u justinmah409 -p 3837fc52-615c-4a0f-9592-682aba654423'
+
+alias awsume=". awsume"
+alias cd="z"
+alias cdi="zi"
+
+alias cl='otto agents claude'
+alias clc='otto agents claude -- --continue'
+function clr() {
+  if [[ -n "$1" ]]; then
+    otto agents claude -- --resume "$1"
+  else
+    otto agents claude -- --resume
+  fi
+}

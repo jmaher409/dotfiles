@@ -24,4 +24,6 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
+# TODO: Use the dotbot-if plugin
+
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" ${PLUGIN_DIRS} -d "${BASEDIR}" -c "${CONFIG}" "${@}"
