@@ -1,0 +1,252 @@
+{
+  "vim.normalModeKeyBindings": [
+    {
+      "before": [
+        "u"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "undo",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": [
+        "<C-r>"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "redo",
+          "args": []
+        }
+      ]
+    }
+  ],
+  "terminal.integrated.shellIntegration.enabled": false,
+  "files.autoSave": "onFocusChange",
+  "editor.tabSize": 2,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.rulers": [
+    80,
+    100
+  ],
+  "editor.tokenColorCustomizations": {
+    "[Material Theme Darker High Contrast]": {
+      "comments": "#229977"
+    }
+  },
+  "files.insertFinalNewline": true,
+  "ruby.codeCompletion": "rcodetools",
+  "vim.easymotion": true,
+  "vim.leader": ";",
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredLightColorTheme": "Night Owl Light",
+  "workbench.iconTheme": "catppuccin-mocha",
+  "githubPullRequests.remotes": [
+    "origin"
+  ],
+  "githubPullRequests.telemetry.enabled": false,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'IBMPlexMono'",
+  "markdown.preview.breaks": true,
+  "terminal.integrated.fontSize": 14,
+  "ruby.useLanguageServer": true,
+  "ruby.format": "rubocop",
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "powermode.presets": "exploding-rift",
+  "ruby.intellisense": "rubyLocate",
+  "workbench.editor.wrapTabs": true,
+  "workbench.editor.decorations.badges": true,
+  "workbench.editor.decorations.colors": true,
+  "search.mode": "reuseEditor",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "githubPullRequests.queries": [
+    {
+      "label": "Local Pull Request Branches",
+      "query": "default"
+    },
+    {
+      "label": "Waiting For My Review",
+      "query": "repo:${owner}/${repository} is:open review-requested:${user}"
+    },
+    {
+      "label": "Assigned To Me",
+      "query": "repo:${owner}/${repository} is:open assignee:${user}"
+    },
+    {
+      "label": "Created By Me",
+      "query": "repo:${owner}/${repository} is:open author:${user}"
+    },
+    {
+      "label": "All Open",
+      "query": "default"
+    }
+  ],
+  "githubPullRequests.fileListLayout": "tree",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "redhat.telemetry.enabled": false,
+  "editor.cursorStyle": "line",
+  "editor.lineNumbers": "on",
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off",
+  "editor.inlineSuggest.enabled": true,
+  "editor.detectIndentation": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.referencesCodeLens.showOnAllFunctions": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.implementationsCodeLens.enabled": true,
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "editor.bracketPairColorization.enabled": true,
+  "turboConsoleLog.addSemicolonInTheEnd": true,
+  "editor.guides.bracketPairs": true,
+  "normanstypczynski.gqlformatter.enable.graphql": true,
+  "normanstypczynski.gqlformatter.formatGqlString.tabSize": 2,
+  "search.followSymlinks": false,
+  "bazel.enableCodeLens": true,
+  "prettier.configPath": "./.prettierrc.yaml",
+  "powermode.shake.intensity": 20,
+  "powermode.explosions.size": 8,
+  "powermode.enabled": false,
+  "scm.defaultViewMode": "tree",
+  "solargraph.commandPath": "/Users/justin.maher/.asdf/shims/solargraph",
+  "editor.guides.highlightActiveIndentation": false,
+  "ruby.specCommand": "bundle exec rails test",
+  "ruby.specPattern": "test",
+  "ruby.specSaveFile": true,
+  "git.branchProtection": [
+    "main",
+    "master"
+  ],
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "git.mergeEditor": true,
+  "editor.accessibilitySupport": "off",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "githubPullRequests.pullBranch": "never",
+  "editor.stickyScroll.enabled": true,
+  "projectManager.git.baseFolders": [
+    "~/src"
+  ],
+  "terminal.integrated.scrollback": 100000,
+  "cSpell.userWords": [
+    "Abbi",
+    "appfolio",
+    "Datapair",
+    "datasources",
+    "esbuild",
+    "Maher",
+    "mcccomm",
+    "outdir",
+    "Redoc",
+    "reorderable",
+    "Twillio",
+    "vhosts"
+  ],
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "debug.console.fontSize": 17,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "scminput": true,
+    "markdown": true,
+    "yaml": true
+  },
+  "workbench.colorTheme": "Caddy",
+  "workbench.colorCustomizations": {
+    "terminal.border": "#b57edc"
+  },
+  "editor.fontSize": 14,
+  "workbench.panel.defaultLocation": "right",
+  "mermaid-editor.generate.quality": 1,
+  "mermaid-editor.generate.scale": 1,
+  "remote.extensionKind": {
+    "Github.copilot": [
+      "ui"
+    ]
+  },
+  "gopls": {
+    "ui.semanticTokens": true
+  },
+  "dotfiles.repository": "jmaher409/dotfiles",
+  "dotfiles.targetPath": "~/dotfiles",
+  "go.toolsManagement.autoUpdate": true,
+  "workbench.activityBar.location": "top",
+  "workbench.editor.showTabs": "single",
+  "vale.valeCLI.path": "vale",
+  "diffEditor.maxComputationTime": 0,
+  "dev.containers.dockerPath": "/opt/homebrew/bin/docker",
+  "dev.containers.dockerComposePath": "/opt/homebrew/bin/docker-compose",
+  "workbench.preferredDarkColorTheme": "Plastic",
+  "github.copilot.editor.enableAutoCompletions": true,
+  "circleci.hostUrl": "",
+  "circleci.ssh.terminalOrRemoteWindow": "In a terminal",
+  "playwright.reuseBrowser": false,
+  "playwright.showTrace": true,
+  "circleci.notifications.mute": true,
+  "editor.semanticTokenColorCustomizations": {
+    "enabled": true,
+    "rules": {
+      "*.comment": {
+        "foreground": "#fe79c6"
+      }
+    }
+  },
+  "vale.valeCLI.config": "/Users/justin.maher/.vale.ini",
+  "markdownlint.config": {
+    "extends": "${userHome}/.markdownlint.yaml"
+  },
+  "markdownlint.run": "onSave",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.format.enable": true,
+  "eslint.useFlatConfig": true,
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
+  "eslint.lintTask.enable": true,
+  "eslint.debug": true,
+  "eslint.trace.server": "off",
+  "window.zoomPerWindow": false,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "workbench.preferredHighContrastLightColorTheme": "Night Owl Light",
+  "workbench.preferredHighContrastColorTheme": "Plastic",
+  "docker.extension.enableComposeLanguageServer": false,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3.12",
+  "workbench.editor.empty.hint": "hidden",
+  "testExplorer.useNativeTesting": true,
+  "git.blame.editorDecoration.enabled": false,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "claudeCode.selectedModel": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+  "claude-code.selectedModel": "us.anthropic.claude-sonnet-4-5-20250929-v1:0",
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "claudeCode.preferredLocation": "sidebar",
+  "remote.autoForwardPortsSource": "hybrid"
+}

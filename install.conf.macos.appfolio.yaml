@@ -23,6 +23,14 @@
     description: Install Karabiner-Elements if missing
     stdout: true
     stderr: true
+  - command: which ghostty > /dev/null || brew install --cask ghostty
+    description: Install Ghostty if missing
+    stdout: true
+    stderr: true
+  - command: which code > /dev/null && cat ~/dotfiles/vscode/extensions.txt | xargs -L1 code --install-extension --force 2>/dev/null; true
+    description: Install VS Code extensions
+    stdout: true
+    stderr: true
 
 - link:
     ~/.zshrc: shell/zshrc
@@ -38,3 +46,7 @@
     ~/.config/karabiner/karabiner.json: karabiner/karabiner.json
     ~/.config/karabiner/assets/complex_modifications/vi-mode.json: karabiner/assets/complex_modifications/vi-mode.json
     ~/.config/aerospace/aerospace.toml: aerospace/aerospace.toml
+    ~/.config/ghostty/config: ghostty/config
+    ~/.config/ghostty/themes/Tinacious Design Dark: ghostty/themes/Tinacious Design Dark
+    ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
+    ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json

@@ -1,0 +1,22 @@
+theme = Tinacious Design Dark
+
+font-family = CommitMono
+font-size = 17
+
+# Leader key bindings (CTRL+B prefix, like tmux)
+# LEADER+_ → split right (horizontal)
+keybind = ctrl+b>shift+minus=new_split:right
+# LEADER+- → split down (vertical)
+keybind = ctrl+b>minus=new_split:down
+# LEADER+x → close current pane
+keybind = ctrl+b>x=close_surface
+
+# CMD+OPT+1-8 → switch to tab N
+keybind = cmd+opt+one=goto_tab:1
+keybind = cmd+opt+two=goto_tab:2
+keybind = cmd+opt+three=goto_tab:3
+keybind = cmd+opt+four=goto_tab:4
+keybind = cmd+opt+five=goto_tab:5
+keybind = cmd+opt+six=goto_tab:6
+keybind = cmd+opt+seven=goto_tab:7
+keybind = cmd+opt+eight=goto_tab:8
