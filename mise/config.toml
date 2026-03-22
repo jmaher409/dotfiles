@@ -1,0 +1,4 @@
+[tools]
+ruby = "3.2.3"
+node = "24.13.0"
+terraform = "1.5.7"

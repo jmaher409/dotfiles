@@ -4,17 +4,11 @@
 
 - clean : ['~']
 
-- asdf:
-  - plugin: ruby
-    url: https://github.com/asdf-vm/asdf-ruby.git
-  - plugin: nodejs
-    url: https://github.com/asdf-vm/asdf-nodejs.git
-  - plugin: yarn
-    url: https://github.com/twuni/asdf-yarn.git
-  - plugin: golang
-    url: https://github.com/asdf-community/asdf-golang.git
-
 - shell:
+  - command: which mise > /dev/null || brew install mise
+    description: Install mise version manager
+    stdout: true
+    stderr: true
   - command: which aerospace > /dev/null || (brew tap nikitabobko/tap && brew install --cask aerospace)
     description: Install AeroSpace if missing
     stdout: true
@@ -77,3 +71,4 @@
     ~/.config/starship.toml: starship/starship.toml
     ~/.gitconfig: git/gitconfig
     ~/.git_templates/hooks/pre-push: git/git_templates/hooks/pre-push
+    ~/.config/mise/config.toml: mise/config.toml

@@ -67,7 +67,7 @@ export PATH="/Users/justin.maher/.docker/bin:$PATH"
 
 export PATH="/Users/justin.maher/.local/bin:$PATH"
 
-. "$HOME/.asdf/asdf.sh"
+eval "$(mise activate zsh)"
 . "$HOME/.aliasrc"
 source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
