@@ -1,0 +1,8 @@
+
+[git_metrics]
+disabled = false
+
+#[env_var.OTTO_DEVCONTAINER_DEFAULT_PROFILE]
+#default = ""
+#format = "[$env_value] ($style)"
+#style = "bold green"

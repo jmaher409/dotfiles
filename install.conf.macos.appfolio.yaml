@@ -27,6 +27,30 @@
     description: Install Ghostty if missing
     stdout: true
     stderr: true
+  - command: which starship > /dev/null || brew install starship
+    description: Install Starship prompt if missing
+    stdout: true
+    stderr: true
+  - command: which zoxide > /dev/null || brew install zoxide
+    description: Install zoxide if missing
+    stdout: true
+    stderr: true
+  - command: which zim > /dev/null || curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+    description: Install Zim if missing
+    stdout: true
+    stderr: true
+  - command: brew list zsh-history-substring-search > /dev/null 2>&1 || brew install zsh-history-substring-search
+    description: Install zsh-history-substring-search if missing
+    stdout: true
+    stderr: true
+  - command: which git-absorb > /dev/null || brew install git-absorb
+    description: Install git-absorb if missing
+    stdout: true
+    stderr: true
+  - command: which git-lfs > /dev/null || brew install git-lfs
+    description: Install git-lfs if missing
+    stdout: true
+    stderr: true
   - command: which code > /dev/null && cat ~/dotfiles/vscode/extensions.txt | xargs -L1 code --install-extension --force 2>/dev/null; true
     description: Install VS Code extensions
     stdout: true
@@ -50,3 +74,6 @@
     ~/.config/ghostty/themes/Tinacious Design Dark: ghostty/themes/Tinacious Design Dark
     ~/Library/Application Support/Code/User/settings.json: vscode/settings.json
     ~/Library/Application Support/Code/User/keybindings.json: vscode/keybindings.json
+    ~/.config/starship.toml: starship/starship.toml
+    ~/.gitconfig: git/gitconfig
+    ~/.git_templates/hooks/pre-push: git/git_templates/hooks/pre-push

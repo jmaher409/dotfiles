@@ -1,0 +1,78 @@
+[rebase]
+	autosquash = true
+[rerere]
+	enabled = true
+[init]
+	templatedir = ~/.git_templates
+[core]
+	excludesfile = ~/.gitignore
+	untrackedCache = true
+	fsMonitor = true
+[push]
+	default = current
+[user]
+	name = Justin Maher
+	email = justin.maher@appfolio.com
+	signingkey = 919959A90E7E7AB2
+[alias]
+	cleanup = !echo Deleting branches && git branch -r | ag -v master | xargs git branch -d -r && echo Deleting tags && git tag | xargs git tag -d && echo Pruning && git prune && echo Garbage collecting && git gc
+	au = add -u
+	aa = add -A
+	absorb = git-absorb
+	abs = absorb
+	absorbr = absorb --and-rebase
+	absr = absorbr
+	fu = "!f() { git commit --fixup HEAD~$1; }; f"
+	fuc = "!f() { git commit --fixup $1; }; f"
+	fug = "!f() { git commit --fixup :/$1; }; f"
+	ri = "!f() { git rebase -i HEAD~$1; }; f"
+	rim = "! git ri $(git lm | wc -l)"
+	ril = "!f() { git rebase -i HEAD~$(g lm | wc -l); }; f"
+	l = "!f() { git log --oneline --abbrev-commit -n ${1:-10}; }; f"
+	ln = log --name-only --oneline
+	lm = ! git log $(git remote show origin | grep 'HEAD branch' | cut -d' ' -f5).. --oneline
+	lmc = ! git log $(git remote show origin | grep 'HEAD branch' | cut -d' ' -f5).. --oneline | wc -l
+	squash = rebase -i --autosquash
+	wip = ! git commit -am "$(date)" --fixup HEAD
+	tfo = ! git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+	p = push
+	pf = push --force-with-lease
+	adog = log --all --decorate --oneline --graph
+	rebc = rebase --continue
+	rebm = rebase master
+	reba = rebase --abort
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
+	co = checkout
+	ca = commit --amend
+	cm = commit -m
+	cane = commit --amend --no-edit
+	canv = commit --amend --no-verify
+	s = status
+	st = stash
+	stl = stash list
+	sts = stash list --stat
+	nuke = !sh -c 'git branch -D $1 && git push origin :$1' -
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	bd = "!f() { git branch -d $1 && git push origin --delete $1; }; f"
+[pull]
+	rebase = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[color]
+	ui = auto
+[help]
+	autocorrect = 15
+[commit]
+	template = ~/.git-commit-template
+	gpgsign = true
+[merge]
+	renamelimit = 1400
+[gpg]
+	program = gpg
+[absorb]
+	maxStack = 50
+[credential]
+	helper = store

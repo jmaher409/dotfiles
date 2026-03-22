@@ -1,4 +1,3 @@
-zmodule asciiship
 zmodule zsh-users/zsh-completions --fpath src
 zmodule completion
 zmodule zsh-users/zsh-syntax-highlighting
@@ -12,9 +11,5 @@ zmodule k
 zmodule magic-enter
 zmodule ssh
 zmodule utility
-zmodule duration-info
-zmodule git-info
 zmodule joke/zim-yq
-zmodule prompt-pwd
-zmodule s1ck94
 
