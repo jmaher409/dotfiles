@@ -72,3 +72,5 @@
     ~/.gitconfig: git/gitconfig
     ~/.git_templates/hooks/pre-push: git/git_templates/hooks/pre-push
     ~/.config/mise/config.toml: mise/config.toml
+    ~/.vale.ini: vale/.vale.ini
+    ~/.markdownlint.yaml: vale/.markdownlint.yaml

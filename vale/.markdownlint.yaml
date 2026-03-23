@@ -1,0 +1,39 @@
+# Based on https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml
+'$schema': 'https://raw.githubusercontent.com/DavidAnson/markdownlint/main/schema/markdownlint-config-schema.json'
+
+# Default state for all rules
+default: true
+
+# MD013/line-length - Line length
+# Disabled by default with VS Code markdownlint extension because many files include lines
+# longer than the conventional 80 character limit
+# See: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint
+MD013: false
+
+# MD025/single-title/single-h1: Multiple top-level headings in the same document
+# Disable front matter title as MkDocs will use it for navigation title while
+# preserving the h1 for the page title
+MD025:
+  front_matter_title: ''
+
+# MD026/no-trailing-punctuation - Trailing punctuation in heading
+# Disabled due to existing implementation in Vale rules (APM.HeadingPunctuation)
+MD026: false
+
+# MD033/no-inline-html - Inline HTML
+# Disabled by default, but allowing details, figure, figcaption, and summary elements
+# for niche situations. See:
+# - https://squidfunk.github.io/mkdocs-material/reference/images/#image-captions
+# - https://github.com/squidfunk/mkdocs-material/issues/4084#issuecomment-1173415244
+MD033:
+  # Allowed elements
+  allowed_elements:
+    - details
+    - figure
+    - figcaption
+    - summary
+
+# MD046/code-block-style - Code block style
+# Disabled due to required use of idented blocks for Material for MkDocs admonitions
+# See: https://squidfunk.github.io/mkdocs-material/reference/admonitions/
+MD046: false

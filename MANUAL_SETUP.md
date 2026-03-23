@@ -62,6 +62,11 @@ Then add the public key to:
 - **GitHub**: github.com → Settings → SSH keys → New SSH key
 - **AppFolio internal systems** (check with IT/Okta setup)
 
+**AppFolio SSH proxy config** (`~/.ssh/config.appfolio`) is managed by Otto — do not copy it manually. Run this after Otto is set up:
+```sh
+otto auth ssh config
+```
+
 ---
 
 ## 3. 1Password SSH Agent (if used)
