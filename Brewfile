@@ -126,20 +126,6 @@ cask "github"
 cask "karabiner-elements"
 cask "postman"
 cask "visual-studio-code"
-
-# Review: do you still need these?
-# cask "rio"          # terminal emulator (have ghostty)
-# cask "warp"         # terminal emulator (have ghostty)
-# cask "wezterm"      # terminal emulator (have ghostty)
-# cask "rubymine"     # JetBrains Ruby IDE (have VSCode)
-# cask "zed"          # editor (have VSCode + nvim)
-# cask "prince"       # commercial PDF generator
-# cask "xquartz"      # X11 for macOS - needed?
-# brew "go@1.20"      # old Go version - mise handles this now
-# brew "python@3.11"  # old Python - mise handles this now
-# brew "openssl@1.1"  # old OpenSSL - needed by anything?
-# brew "bazel"        # you have bazelisk which manages bazel versions
-# brew "erlang"       # needed? (was a dep of something)
-# brew "swig"         # needed?
-# brew "docutils"     # needed?
-# brew "geckodriver"  # Firefox WebDriver - still doing Playwright/Selenium?
+cask "xquartz"
+cask "zed"
+brew "openssl@1.1"
